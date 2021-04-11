@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using Manager;
-using TMPro;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
+    public Text scoreText;
 
     private GameManager gameManager;
 
