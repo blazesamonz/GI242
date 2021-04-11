@@ -1,65 +1,70 @@
-﻿using System;
-using SpaceShip;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿// using System;
+// using SpaceShip;
+// using UnityEngine;
+// using UnityEngine.UIElements;
 
-namespace Manager
-{
-   public class GameManager : MonoBehaviour
-   {
-       [SerializeField] private Button startButton;
-       [SerializeField] private RectTransform dialog;
-       [SerializeField] private PlayerSpaceShip playerSpaceShip;
-       [SerializeField] private EnemySpaceShip enemySpaceShip;
-       [SerializeField] private ScoreManager scoreManager;
+// namespace Manager
+// {
+//     public class GameManager : MonoBehaviour
+//     {
+//         public event Action OnRestarted;
 
-       public event Action OnRestarted;
-       [SerializeField] private int playerSpaceShipHp;
-       [SerializeField] private int playerSpaceShipMoveSpeed;
-       [SerializeField] private int enemySpaceShipHp;
-       [SerializeField] private int enemySpaceShipMoveSpeed;
+//         [Header("HUD")]
+//         [SerializeField] private Button startButton;
+//         [SerializeField] private RectTransform dialog;
 
-       private void OnStartButtonClicked() 
-       {
-           dialog.gameObject.SetActive(false);
-           StartGame();
-       }
+//         [Header("Game Objects")]
+//         [SerializeField] private PlayerSpaceShip playerSpaceShip;
+//         [SerializeField] private EnemySpaceShip enemySpaceShip;
 
-       private void StartGame()
-       {
-           scoreManager.Init(this);
-           SpawnPlayerSpaceShip();
-           SpawnEnemySpaceShip();
-       }
+//         [Header("Manager")]
+//         [SerializeField] private ScoreManager scoreManager;
 
-       private void SpawnPlayerSpaceShip()
-       {
-           var spaceShip = Instantiate(playerSpaceShip);
-           spaceShip.Init(playerSpaceShipHp, playerSpaceShipMoveSpeed);
-           spaceShip.OnExploded += OnPlayerSpaceShipExploded;
-       }
+//         [Header("Setting")]
+//         [SerializeField] private int playerSpaceShipHp;
+//         [SerializeField] private int playerSpaceShipMoveSpeed;
+//         [SerializeField] private int enemySpaceShipHp;
+//         [SerializeField] private int enemySpaceShipMoveSpeed;
 
-       private void OnPlayerSpaceShipExploded()
-       {
-           Restart();
-       }
+//         private void OnStartButtonClicked()
+//         {
+//             dialog.gameObject.SetActive(false);
+//             StartGame();
+//         }
 
-       private void SpawnEnemySpaceShip() 
-       {
-           var spaceShip = Instantiate(enemySpaceShip);
-           spaceShip.Init(enemySpaceShipHp, enemySpaceShipMoveSpeed);
-           spaceShip.OnExploded += OnEnemySpaceShipExploded;
-       }
+//         private void StartGame()
+//         {
+//             scoreManager.Init(this);
+//             SpawnPlayerSpaceShip();
+//             SpawnEnemySpaceShip();
+//         }
 
-       private void OnEnemySpaceShipExploded() 
-       {
-           scoreManager.SetScore(1);
-       }
+//         private void SpawnPlayerSpaceShip()
+//         {
+//             var spaceShip = Instantiate(playerSpaceShip);
+//             spaceShip.OnExploded += OnPlayerSpaceShipExploded;
+//         }
 
-      private void Restart()
-      {
-          dialog.gameObject.SetActive(true);
-          OnRestarted?.Invoke();
-      }
-   }
-}
+//         private void OnPlayerSpaceShipExploded()
+//         {
+//             Restart();
+//         }
+
+//         private void SpawnEnemySpaceShip()
+//         {
+//             var spaceShip = Instantiate(enemySpaceShip);
+//             spaceShip.OnExploded += OnEnemySpaceShipExploded;
+//         }
+
+//         private void OnEnemySpaceShipExploded()
+//         {
+//             scoreManager.SetScore(1);
+//         }
+
+//         private void Restart()
+//         {
+//             dialog.gameObject.SetActive(true);
+//             OnRestarted?.Invoke();
+//         }
+//     }
+// }

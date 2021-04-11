@@ -1,13 +1,9 @@
 ﻿using System;
 
-namespace SpaceShip
+namespace Damage
 {
     public interface IDamagable
     {
-        event Action OnExploded;
-
         void TakeHit(int damage);
-
-        void Explode();
     }
 }
