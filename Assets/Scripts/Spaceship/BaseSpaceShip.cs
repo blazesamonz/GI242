@@ -23,6 +23,7 @@ namespace SpaceShip
 
         public abstract void Fire();
         public abstract void Move(Vector2 direction);
+        public abstract void Explode();
 
         public void Init(int hp, float speed)
         {

@@ -23,8 +23,11 @@ namespace Damage
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var target = other.gameObject.GetComponent<IDamagable>();
-            target?.TakeHit(damage);
+            if (other?.GetComponent<EnemySpaceShip>() is IDamagable ship)
+            {
+                ship.TakeHit(damage);
+                Destroy(gameObject);
+            }
         }
     }
 }

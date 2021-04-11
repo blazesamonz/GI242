@@ -11,6 +11,8 @@ namespace SpaceShip
     {
         public float fireRate = 0.2f;
 
+
+
         public override void Fire()
         {
             var bullet = Instantiate(base.bullet, gunPosition.position, Quaternion.identity);
@@ -53,9 +55,10 @@ namespace SpaceShip
             Explode();
         }
 
-        private void Explode()
+        public override void Explode()
         {
             OnExploded();
+            Destroy(gameObject);
         }
     }
 }
